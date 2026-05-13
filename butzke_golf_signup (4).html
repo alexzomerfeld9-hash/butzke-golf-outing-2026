@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8th Annual Joshua Butzke Memorial Golf Outing</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark:  #1a3a2a;
+    --green-mid:   #2d6a4f;
+    --green-light: #52b788;
+    --gold:        #c9a84c;
+    --gold-light:  #e8c97a;
+    --cream:       #f8f4ec;
+    --cream-dark:  #ede8dc;
+    --text-dark:   #1a1a1a;
+    --text-mid:    #3d3d3d;
+    --shadow:      rgba(26,58,42,0.18);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--green-dark);
+    background-image:
+      radial-gradient(ellipse at 20% 0%, #2d6a4f44 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, #1a3a2a88 0%, transparent 60%);
+    font-family: 'Lato', sans-serif;
+    color: var(--text-dark);
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  /* ── HEADER ─────────────────────────────────── */
+  .hero {
+    max-width: 760px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .eagle-ring {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    background: var(--green-dark);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.2rem;
+    font-size: 3rem;
+    box-shadow: 0 0 0 6px #1a3a2a, 0 0 0 9px var(--gold-light)44;
+  }
+
+  .tagline {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: .85rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: .5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: .4rem;
+  }
+
+  .hero h1 span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--green-light);
+    margin-bottom: 1.2rem;
+  }
+
+  .event-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    justify-content: center;
+    margin-bottom: .5rem;
+  }
+
+  .pill {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(201,168,76,.35);
+    color: var(--gold-light);
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .35rem .9rem;
+    border-radius: 999px;
+  }
+
+  .cause-note {
+    color: rgba(255,255,255,.65);
+    font-size: .82rem;
+    max-width: 540px;
+    margin: .8rem auto 0;
+    line-height: 1.6;
+  }
+
+  /* ── CARD ───────────────────────────────────── */
+  .card {
+    background: var(--cream);
+    max-width: 760px;
+    margin: 0 auto 1.8rem;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px var(--shadow);
+  }
+
+  .card-header {
+    background: var(--green-mid);
+    color: #fff;
+    padding: .9rem 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+  }
+
+  .card-header .icon { font-size: 1.2rem; }
+
+  .card-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: .03em;
+  }
+
+  .card-body { padding: 1.6rem 1.8rem; }
+
+  /* ── FORM GRID ──────────────────────────────── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.4rem; }
+  .grid-1 { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  .span-2 { grid-column: span 2; }
+
+  @media (max-width: 560px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .span-2 { grid-column: span 1; }
+  }
+
+  label {
+    display: block;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--green-dark);
+    margin-bottom: .4rem;
+  }
+
+  input[type=text], input[type=email], input[type=tel], select {
+    width: 100%;
+    padding: .65rem .9rem;
+    border: 1.5px solid #ccc8bb;
+    border-radius: 8px;
+    background: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size: .95rem;
+    color: var(--text-dark);
+    transition: border-color .2s, box-shadow .2s;
+    appearance: none;
+  }
+
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--green-mid);
+    box-shadow: 0 0 0 3px rgba(45,106,79,.15);
+  }
+
+  .select-wrap { position: relative; }
+  .select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: .9rem; top: 50%;
+    transform: translateY(-50%);
+    color: var(--green-mid);
+    pointer-events: none;
+    font-size: .9rem;
+  }
+
+  /* ── GOLFER ROWS ────────────────────────────── */
+  .golfer-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: .8rem 1rem;
+    align-items: end;
+    padding: .85rem 1rem;
+    background: #fff;
+    border: 1.5px solid #ccc8bb;
+    border-radius: 10px;
+    margin-bottom: .75rem;
+  }
+
+  .golfer-row:last-child { margin-bottom: 0; }
+
+  .golfer-num {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: .85rem;
+    color: var(--green-mid);
+    margin-bottom: .3rem;
+  }
+
+  @media (max-width: 480px) {
+    .golfer-row { grid-template-columns: 1fr; }
+  }
+
+  /* ── OPTION CARDS ───────────────────────────── */
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: .75rem;
+  }
+
+  .option-card {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .option-card input[type=radio],
+  .option-card input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+  }
+
+  .option-label {
+    display: block;
+    border: 2px solid #d0cbbf;
+    border-radius: 10px;
+    padding: .85rem 1rem;
+    background: #fff;
+    transition: all .2s;
+    cursor: pointer;
+  }
+
+  .option-card input:checked + .option-label {
+    border-color: var(--green-mid);
+    background: rgba(45,106,79,.07);
+    box-shadow: 0 0 0 3px rgba(45,106,79,.12);
+  }
+
+  .option-label:hover {
+    border-color: var(--green-light);
+    background: rgba(82,183,136,.05);
+  }
+
+  .opt-title {
+    font-weight: 700;
+    font-size: .9rem;
+    color: var(--green-dark);
+    margin-bottom: .15rem;
+  }
+
+  .opt-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .opt-check { color: var(--green-mid); font-size: .8rem; margin-top: .2rem; display: none; }
+  .option-card input:checked ~ .opt-check,
+  .option-card input:checked + .option-label .opt-check { display: block; }
+
+  /* ── SPONSORSHIP ────────────────────────────── */
+  .sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: .75rem;
+  }
+
+  .sponsor-card {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .sponsor-card input[type=checkbox] {
+    position: absolute; opacity: 0; width:0; height:0;
+  }
+
+  .sponsor-label {
+    display: block;
+    border: 2px solid #d0cbbf;
+    border-radius: 10px;
+    padding: .85rem 1rem;
+    background: #fff;
+    transition: all .2s;
+    cursor: pointer;
+  }
+
+  .sponsor-card input:checked + .sponsor-label {
+    border-color: var(--gold);
+    background: rgba(201,168,76,.07);
+    box-shadow: 0 0 0 3px rgba(201,168,76,.15);
+  }
+
+  .sponsor-label:hover { border-color: var(--gold-light); }
+
+  .sp-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .sp-name {
+    font-weight: 700;
+    font-size: .9rem;
+    color: var(--green-dark);
+    margin: .1rem 0 .2rem;
+  }
+
+  .sp-desc { font-size: .75rem; color: #666; line-height: 1.4; }
+
+  /* ── SIGNAGE INPUT ──────────────────────────── */
+  .signage-box {
+    background: rgba(201,168,76,.08);
+    border: 1.5px dashed var(--gold);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin-top: 1rem;
+  }
+
+  .signage-box label { color: var(--green-dark); }
+
+  textarea {
+    width: 100%;
+    padding: .65rem .9rem;
+    border: 1.5px solid #ccc8bb;
+    border-radius: 8px;
+    font-family: 'Lato', sans-serif;
+    font-size: .95rem;
+    resize: vertical;
+    min-height: 70px;
+  }
+
+  textarea:focus {
+    outline: none;
+    border-color: var(--green-mid);
+    box-shadow: 0 0 0 3px rgba(45,106,79,.15);
+  }
+
+  /* ── DONATION ───────────────────────────────── */
+  .donation-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .donation-row label { margin-bottom: 0; white-space: nowrap; }
+
+  .donation-input-wrap {
+    position: relative;
+    flex: 1; min-width: 160px;
+  }
+
+  .donation-input-wrap span {
+    position: absolute;
+    left: .9rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: var(--green-mid);
+    font-weight: 700;
+  }
+
+  .donation-input-wrap input {
+    padding-left: 1.8rem;
+  }
+
+  /* ── PAYMENT ────────────────────────────────── */
+  .payment-box {
+    background: var(--green-dark);
+    color: #fff;
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    font-size: .88rem;
+    line-height: 1.8;
+  }
+
+  .payment-box strong { color: var(--gold-light); }
+
+  .payment-box a {
+    color: var(--green-light);
+    text-decoration: underline;
+    font-style: italic;
+  }
+
+  /* ── SUBMIT ─────────────────────────────────── */
+  .submit-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .btn-submit {
+    background: var(--gold);
+    color: var(--green-dark);
+    border: none;
+    padding: 1rem 3rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background .2s, transform .15s, box-shadow .2s;
+    letter-spacing: .04em;
+    box-shadow: 0 6px 24px rgba(201,168,76,.35);
+  }
+
+  .btn-submit:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(201,168,76,.45);
+  }
+
+  .btn-submit:active { transform: translateY(0); }
+
+  .contact-note {
+    color: rgba(255,255,255,.5);
+    font-size: .8rem;
+    margin-top: 1rem;
+  }
+
+  .contact-note a { color: var(--green-light); }
+
+  /* ── SCHEDULE SIDEBAR ───────────────────────── */
+  .schedule-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  .schedule-list li {
+    display: flex;
+    gap: .8rem;
+    align-items: flex-start;
+    font-size: .9rem;
+    color: var(--text-mid);
+  }
+
+  .schedule-list .time {
+    font-weight: 700;
+    color: var(--green-mid);
+    min-width: 80px;
+  }
+
+  /* ── INCLUDES ───────────────────────────────── */
+  .includes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: .5rem;
+  }
+
+  .include-item {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .88rem;
+    color: var(--text-mid);
+  }
+
+  .include-item::before {
+    content: '✓';
+    color: var(--green-mid);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ── SUCCESS BANNER ─────────────────────────── */
+  #success {
+    display: none;
+    background: var(--green-mid);
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 760px;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px var(--shadow);
+  }
+
+  #success h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    margin-bottom: .5rem;
+    color: var(--gold-light);
+  }
+
+  #success p { color: rgba(255,255,255,.85); line-height: 1.7; }
+
+  .divider {
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: .5rem 0 1.2rem;
+    opacity: .4;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<div class="hero">
+  <div class="eagle-ring">🦅</div>
+  <p class="tagline">8th Annual Golf Outing</p>
+  <h1>The Joshua <span>Butzke</span><br>Memorial Foundation</h1>
+  <h2>Outing in Support of The Joshua Butzke Memorial Foundation</h2>
+  <div class="event-pills">
+    <span class="pill">📅 Tuesday, June 30, 2026</span>
+    <span class="pill">⛳ 8:00 AM Start</span>
+    <span class="pill">📍 Middle Island Country Club</span>
+  </div>
+  <p class="cause-note">All proceeds benefit the Joshua Butzke Memorial Foundation — a 501(c)(3) charitable organization supporting Alzheimer's, hunger initiatives, and educational opportunities in our local community.</p>
+</div>
+
+<form id="signup" onsubmit="handleSubmit(event)" action="https://formspree.io/f/mqennzod" method="POST">
+
+  <!-- ── CONTACT INFO ─────────────────────────────────── -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">👤</span>
+      <h3>Your Contact Information</h3>
+    </div>
+    <div class="card-body">
+      <div class="grid-2">
+        <div>
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="Full Name" placeholder="Jane Smith" required>
+        </div>
+        <div>
+          <label for="phone">Phone *</label>
+          <input type="tel" id="phone" name="Phone" placeholder="(631) 555-0100" required>
+        </div>
+        <div class="span-2">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+        </div>
+        <div class="span-2">
+          <label for="address">Mailing Address</label>
+          <input type="text" id="address" name="Mailing Address" placeholder="123 Main St, Town, NY 11953">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── REGISTRATION ─────────────────────────────────── -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">⛳</span>
+      <h3>Registration — Please Reserve the Following</h3>
+    </div>
+    <div class="card-body">
+      <div class="options-grid" style="margin-bottom:1.4rem;">
+        <label class="option-card">
+          <input type="radio" name="Registration" value="Single Golfer - $185" required>
+          <div class="option-label">
+            <div class="opt-title">Single Golfer</div>
+            <div class="opt-price">$185</div>
+          </div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="Registration" value="Foursome - $740">
+          <div class="option-label">
+            <div class="opt-title">Foursome</div>
+            <div class="opt-price">$740</div>
+          </div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="Registration" value="Unable to Attend - Donation Only">
+          <div class="option-label">
+            <div class="opt-title">Unable to Attend</div>
+            <div class="opt-price" style="font-size:.9rem; color:#888;">Donation Only</div>
+          </div>
+        </label>
+      </div>
+
+      <!-- Golfer Names -->
+      <div style="margin-bottom:.5rem;">
+        <label style="margin-bottom:.8rem;">Golfer Name(s) &amp; Shirt Size</label>
+        <div class="golfer-row">
+          <div>
+            <div class="golfer-num">Golfer 1</div>
+            <input type="text" placeholder="Full Name">
+          </div>
+          <div>
+            <label>Shirt Size</label>
+            <div class="select-wrap">
+              <select>
+                <option value="">-- Size --</option>
+                <option>S</option><option>M</option><option>L</option>
+                <option>XL</option><option>XXL</option><option>XXXL</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="golfer-row">
+          <div>
+            <div class="golfer-num">Golfer 2</div>
+            <input type="text" placeholder="Full Name">
+          </div>
+          <div>
+            <label>Shirt Size</label>
+            <div class="select-wrap">
+              <select>
+                <option value="">-- Size --</option>
+                <option>S</option><option>M</option><option>L</option>
+                <option>XL</option><option>XXL</option><option>XXXL</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="golfer-row">
+          <div>
+            <div class="golfer-num">Golfer 3</div>
+            <input type="text" placeholder="Full Name">
+          </div>
+          <div>
+            <label>Shirt Size</label>
+            <div class="select-wrap">
+              <select>
+                <option value="">-- Size --</option>
+                <option>S</option><option>M</option><option>L</option>
+                <option>XL</option><option>XXL</option><option>XXXL</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="golfer-row">
+          <div>
+            <div class="golfer-num">Golfer 4</div>
+            <input type="text" placeholder="Full Name">
+          </div>
+          <div>
+            <label>Shirt Size</label>
+            <div class="select-wrap">
+              <select>
+                <option value="">-- Size --</option>
+                <option>S</option><option>M</option><option>L</option>
+                <option>XL</option><option>XXL</option><option>XXXL</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SPONSORSHIP ─────────────────────────────────── -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">🏆</span>
+      <h3>Sponsorship Opportunities</h3>
+    </div>
+    <div class="card-body">
+      <p style="font-size:.88rem; color:#555; margin-bottom:1.1rem;">Select one or more sponsorship levels. All commitments must be received by <strong>June 16th</strong> for inclusion on signage.</p>
+      <div class="sponsor-grid">
+        <label class="sponsor-card">
+          <input type="checkbox" name="Sponsorship" value="Lunch Sponsor - $1,100">
+          <div class="sponsor-label">
+            <div class="sp-price">$1,100</div>
+            <div class="sp-name">Lunch Sponsor</div>
+            <div class="sp-desc">12×18 sign with your name or company</div>
+          </div>
+        </label>
+        <label class="sponsor-card">
+          <input type="checkbox" name="Sponsorship" value="Breakfast Sponsor - $550">
+          <div class="sponsor-label">
+            <div class="sp-price">$550</div>
+            <div class="sp-name">Breakfast Sponsor</div>
+            <div class="sp-desc">12×18 sign with your name or company</div>
+          </div>
+        </label>
+        <label class="sponsor-card">
+          <input type="checkbox" name="Sponsorship" value="Beverage Cart - $350">
+          <div class="sponsor-label">
+            <div class="sp-price">$350</div>
+            <div class="sp-name">Beverage Cart</div>
+            <div class="sp-desc">12×18 sign with your name or company</div>
+          </div>
+        </label>
+        <label class="sponsor-card">
+          <input type="checkbox" name="Sponsorship" value="Driving Range - $300">
+          <div class="sponsor-label">
+            <div class="sp-price">$300</div>
+            <div class="sp-name">Driving Range</div>
+            <div class="sp-desc">12×18 sign with your name or company</div>
+          </div>
+        </label>
+        <label class="sponsor-card">
+          <input type="checkbox" name="Sponsorship" value="Tee Sign - $150">
+          <div class="sponsor-label">
+            <div class="sp-price">$150</div>
+            <div class="sp-name">Tee Sign</div>
+            <div class="sp-desc">12×18 sign with your name or company</div>
+          </div>
+        </label>
+        <label class="sponsor-card">
+          <input type="checkbox" name="Sponsorship" value="Longest Drive - $150">
+          <div class="sponsor-label">
+            <div class="sp-price">$150</div>
+            <div class="sp-name">Longest Drive</div>
+            <div class="sp-desc">12×18 sign with your name or company</div>
+          </div>
+        </label>
+        <label class="sponsor-card">
+          <input type="checkbox" name="Sponsorship" value="Closest to the Pin - $150">
+          <div class="sponsor-label">
+            <div class="sp-price">$150</div>
+            <div class="sp-name">Closest to the Pin</div>
+            <div class="sp-desc">12×18 sign with your name or company</div>
+          </div>
+        </label>
+      </div>
+
+      <!-- Signage text -->
+      <div class="signage-box">
+        <label for="signage">What would you like on your sponsorship signage?</label>
+        <textarea id="signage" name="Signage Text" placeholder="Your name, company name, or message to appear on the sign…"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DONATION ─────────────────────────────────────── -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">💛</span>
+      <h3>Unable to Attend? Make a Donation</h3>
+    </div>
+    <div class="card-body">
+      <div class="donation-row">
+        <label for="donation">Donation Amount</label>
+        <div class="donation-input-wrap">
+          <span>$</span>
+          <input type="text" id="donation" name="Donation Amount" placeholder="0.00">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── WHAT'S INCLUDED ──────────────────────────────── -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">🎁</span>
+      <h3>Package Includes</h3>
+    </div>
+    <div class="card-body">
+      <div class="includes-grid">
+        <div class="include-item">18 Holes of Golf with Cart</div>
+        <div class="include-item">Putting Contest</div>
+        <div class="include-item">8:00 AM Start (Best Ball)</div>
+        <div class="include-item">Beverage Cart</div>
+        <div class="include-item">Grab &amp; Go Breakfast</div>
+        <div class="include-item">BBQ Lunch</div>
+        <div class="include-item">Raffles (tickets available)</div>
+        <div class="include-item">Shirt Included</div>
+        <div class="include-item">Prizes — Longest Drive</div>
+        <div class="include-item">Prizes — Closest to Pin</div>
+        <div class="include-item">Prizes — Best Score</div>
+      </div>
+      <div class="divider" style="margin-top:1.2rem;"></div>
+      <ul class="schedule-list">
+        <li><span class="time">7:15 AM</span> Check in (or later)</li>
+        <li><span class="time">8:00 AM</span> Tee time start</li>
+        <li><span class="time">1:30 PM</span> Lunch &amp; Raffle</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── PAYMENT INFO ─────────────────────────────────── -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">💳</span>
+      <h3>Payment &amp; Registration Details</h3>
+    </div>
+    <div class="card-body">
+      <div class="payment-box">
+        <p>Please make checks payable to: <strong>The Joshua Butzke Memorial Foundation</strong></p>
+        <p style="margin-top:.6rem;">Mail to: <strong>Butzke Residence, 519 Broadwater Road, Arnold, MD 21012</strong></p>
+        <p style="margin-top:.6rem;">Venmo: <strong>@Joshua-Butzke-Memorial-Foundation</strong></p>
+        <p style="margin-top:.6rem;">All commitments must be received by <strong style="color:#e8c97a;">June 16th</strong> with individual/family or company name for signage.</p>
+        <p style="margin-top:.8rem; font-size:.82rem; opacity:.75;">Questions? Contact Rich Butzke: <a href="mailto:soccer5butzke@aol.com">soccer5butzke@aol.com</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SUBMIT ────────────────────────────────────────── -->
+  <div class="submit-wrap">
+    <button type="submit" class="btn-submit">⛳ Submit Registration</button>
+    <p class="contact-note">Questions? Email <a href="mailto:soccer5butzke@aol.com">soccer5butzke@aol.com</a></p>
+  </div>
+
+</form>
+
+<!-- ── SUCCESS ─────────────────────────────────────────── -->
+<div id="success">
+  <div style="font-size:3rem; margin-bottom:.5rem;">🦅</div>
+  <h2>Registration Received!</h2>
+  <p>Thank you for supporting the Joshua Butzke Memorial Foundation.<br>
+  Please mail your payment to <strong>519 Broadwater Road, Arnold MD 21012</strong><br>
+  or use Venmo: <strong>@Joshua-Butzke-Memorial-Foundation</strong><br><br>
+  Questions? Contact Rich Butzke at <a href="mailto:soccer5butzke@aol.com" style="color:#52b788;">soccer5butzke@aol.com</a></p>
+</div>
+
+<script>
+async function handleSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('signup');
+  const btn  = form.querySelector('.btn-submit');
+
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+
+  const data = new FormData(form);
+
+  // Collect golfer names + shirt sizes manually since they lack name attrs
+  const golferInputs = form.querySelectorAll('.golfer-row input[type=text]');
+  const golferSelects = form.querySelectorAll('.golfer-row select');
+  ['Golfer 1','Golfer 2','Golfer 3','Golfer 4'].forEach((g, i) => {
+    data.append(g + ' Name', golferInputs[i]?.value || '');
+    data.append(g + ' Shirt Size', golferSelects[i]?.value || '');
+  });
+
+  try {
+    const res = await fetch('https://formspree.io/f/mqennzod', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      form.style.display = 'none';
+      document.querySelector('.hero').style.display = 'none';
+      document.getElementById('success').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const json = await res.json();
+      const msg = json?.errors?.map(err => err.message).join(', ') || 'Submission failed.';
+      alert('There was a problem: ' + msg + '\n\nPlease email soccer5butzke@aol.com directly.');
+      btn.textContent = '⛳ Submit Registration';
+      btn.disabled = false;
+    }
+  } catch (err) {
+    alert('Network error. Please check your connection and try again, or email soccer5butzke@aol.com.');
+    btn.textContent = '⛳ Submit Registration';
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
